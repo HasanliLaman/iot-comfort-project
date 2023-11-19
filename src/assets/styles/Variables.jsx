@@ -2,76 +2,76 @@ import { css } from "styled-components";
 
 const Variables = css`
   :root {
-    --color-grey-1000: "#101113";
-    --color-grey-900: "#202326";
-    --color-grey-800: "#40464d";
-    --color-grey-700: "#687484";
-    --color-grey-600: "#666687";
-    --color-grey-500: "#A0AEC0";
-    --color-grey-400: "#b3becd";
-    --color-grey-300: "#c6ced9";
-    --color-grey-200: "#d9dfe6";
-    --color-grey-150: "#eceff2";
-    --color-grey-100: "#F7FAFC";
-    --color-grey-0: "#ffffff";
+    --color-grey-1000: #101113;
+    --color-grey-900: #202326;
+    --color-grey-800: #40464d;
+    --color-grey-700: #606873;
+    --color-grey-600: #808b9a;
+    --color-grey-500: #a0aec0;
+    --color-grey-400: #b3becd;
+    --color-grey-300: #c6ced9;
+    --color-grey-200: #d9dfe6;
+    --color-grey-150: #eceff2;
+    --color-grey-100: #f7fafc;
+    --color-grey-0: #ffffff;
 
-    --color-blue-900: "#0C4180";
-    --color-blue-700: "#1268CC";
-    --color-blue-500: "#1782FF";
-    --color-blue-300: "#74B4FF";
-    --color-blue-100: "#D1E6FF";
+    --color-blue-900: #0c4180;
+    --color-blue-700: #1268cc;
+    --color-blue-500: #1782ff;
+    --color-blue-300: #74b4ff;
+    --color-blue-100: #d1e6ff;
 
-    --color-light-blue-900: "#0C4180";
-    --color-light-blue-700: "#1268CC";
-    --color-light-blue-500: "#1782FF";
-    --color-light-blue-300: "#74B4FF";
-    --color-light-blue-100: "#D1E6FF";
+    --color-light-blue-900: #0c4180;
+    --color-light-blue-700: #1268cc;
+    --color-light-blue-500: #1782ff;
+    --color-light-blue-300: #74b4ff;
+    --color-light-blue-100: #d1e6ff;
 
-    --color-purple-900: "#44337A";
-    --color-purple-700: "#6B46C1";
-    --color-purple-500: "#9F7AEA";
-    --color-purple-300: "#D6BCFA";
-    --color-purple-100: "#F2E5FF";
+    --color-purple-900: #44337a;
+    --color-purple-700: #6b46c1;
+    --color-purple-500: #9f7aea;
+    --color-purple-300: #d6bcfa;
+    --color-purple-100: #f2e5ff;
 
-    --color-magenta-900: "#97266D";
-    --color-magenta-700: "#D53F8C";
-    --color-magenta-500: "#D53F8C";
-    --color-magenta-300: "#FBB6CE";
-    --color-magenta-100: "#FBE1EA";
+    --color-magenta-900: #97266d;
+    --color-magenta-700: #d53f8c;
+    --color-magenta-500: #d53f8c;
+    --color-magenta-300: #fbb6ce;
+    --color-magenta-100: #fbe1ea;
 
-    --color-yellow-900: "#D1A300";
-    --color-yellow-700: "#EBB700";
-    --color-yellow-500: "#FFC700";
-    --color-yellow-300: "#FFD84D";
-    --color-yellow-100: "#FFEEB3";
+    --color-yellow-900: #d1a300;
+    --color-yellow-700: #ebb700;
+    --color-yellow-500: #ffc700;
+    --color-yellow-300: #ffd84d;
+    --color-yellow-100: #ffeeb3;
 
-    --color-orange-900: "#E65100";
-    --color-orange-700: "#F57C00";
-    --color-orange-500: "#FF9800";
-    --color-orange-300: "#FFB74D";
-    --color-orange-100: "#FFE0B2";
+    --color-orange-900: #e65100;
+    --color-orange-700: #f57c00;
+    --color-orange-500: #ff9800;
+    --color-orange-300: #ffb74d;
+    --color-orange-100: #ffe0b2;
 
-    --color-green-900: "#22543D";
-    --color-green-700: "#2F855A";
-    --color-green-500: "#48BB78";
-    --color-green-300: "#9AE6B4";
-    --color-green-100: "#F0FFF4";
+    --color-green-900: #22543d;
+    --color-green-700: #2f855a;
+    --color-green-500: #48bb78;
+    --color-green-300: #9ae6b4;
+    --color-green-100: #f0fff4;
 
-    --color-light-green-900: "#41621E";
-    --color-light-green-700: "#5B892A";
-    --color-light-green-500: "#82C43C";
-    --color-light-green-300: "#B4DC8A";
-    --color-light-green-100: "#E6F3D8";
+    --color-light-green-900: #41621e;
+    --color-light-green-700: #5b892a;
+    --color-light-green-500: #82c43c;
+    --color-light-green-300: #b4dc8a;
+    --color-light-green-100: #e6f3d8;
 
-    --color-red-900: "#B71C1C";
-    --color-red-700: "#D32F2F";
-    --color-red-500: "#F44336";
-    --color-red-300: "#E57373";
-    --color-red-100: "#FFCDD2";
+    --color-red-900: #b71c1c;
+    --color-red-700: #d32f2f;
+    --color-red-500: #f44336;
+    --color-red-300: #e57373;
+    --color-red-100: #ffcdd2;
 
-    --color-bg: "#2A3240";
-    --color-yellow: "#2A3240";
-    --color-light-bg: "#F7FAFC";
+    --color-bg: #2a3240;
+    --color-yellow: #f5ba41;
+    --color-light-bg: #f7fafc;
 
     --font-title: "Catamaran", sans-serif;
     --font-body: "Noto Sans", sans-serif;

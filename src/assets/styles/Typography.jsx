@@ -10,6 +10,7 @@ const Typography = css`
     font-size: 1.6rem;
     font-weight: var(--fw-regular);
     line-height: 2.6rem;
+    color: var(--color-grey-800);
   }
 
   h1,
@@ -18,8 +19,7 @@ const Typography = css`
   h4,
   h5,
   h6 {
-    font-family: var(--font-title);
-    font-weight: var(--fw-bold);
+    font-weight: var(--fw-semibold);
   }
 
   h2 {
