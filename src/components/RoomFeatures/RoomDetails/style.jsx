@@ -3,8 +3,7 @@ import styled from "styled-components";
 const StyleRoomDetails = styled.section`
   border-radius: 20px;
   background: var(--color-grey-0);
-  box-shadow: 0px 4px 20px -2px rgba(50, 50, 71, 0.02),
-    0px 0px 5px 0px rgba(12, 26, 75, 0.04);
+  box-shadow: var(--box-shadow-card);
   padding: 2.5rem;
   font-size: 1.9rem;
   line-height: 2.6rem;

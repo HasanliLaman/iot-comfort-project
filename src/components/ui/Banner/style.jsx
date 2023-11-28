@@ -8,18 +8,18 @@ const StyleBanner = styled.div`
     background-image: url(${bgImg});
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 3rem;
+    padding: 2rem;
     display: flex;
     align-items: center;
-    gap: 2.4rem;
+    gap: 2rem;
     color: var(--color-grey-0);
     background-position: 200px 20px;
   }
 
   .btn-back {
     display: flex;
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,8 +33,23 @@ const StyleBanner = styled.div`
     }
   }
 
+  h3 {
+    font-size: 2.3rem;
+  }
+
   @media (min-width: 768px) {
+    h3 {
+      font-size: 2.6rem;
+    }
+
+    .btn-back {
+      width: 46px;
+      height: 46px;
+    }
+
     & > div {
+      gap: 2.4rem;
+      padding: 3rem;
       background-position: 200px -50px;
     }
   }

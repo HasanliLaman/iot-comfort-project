@@ -6,8 +6,7 @@ const StyleBuildingInfo = styled.section`
   padding: 0.8rem;
   border-radius: 2rem;
   background: var(--color-grey-0);
-  box-shadow: 0px 4px 20px -2px rgba(50, 50, 71, 0.02),
-    0px 0px 8px 0px rgba(12, 26, 75, 0.1);
+  box-shadow: var(--box-shadow);
   gap: 1.8rem;
   color: var(--color-grey-600);
 

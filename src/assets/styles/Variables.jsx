@@ -81,6 +81,11 @@ const Variables = css`
     --fw-semibold: 600;
     --fw-bold: 700;
 
+    --box-shadow: 0px 4px 20px -2px rgba(50, 50, 71, 0.02),
+      0px 0px 8px 0px rgba(12, 26, 75, 0.1);
+    --box-shadow-card: 0px 4px 20px -2px rgba(50, 50, 71, 0.02),
+      0px 0px 5px 0px rgba(12, 26, 75, 0.04);
+
     --screen-sm: 576px;
     --screen-md: 768px;
     --screen-lg: 992px;

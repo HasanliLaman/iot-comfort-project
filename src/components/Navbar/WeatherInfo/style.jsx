@@ -10,8 +10,7 @@ const StyleWeatherInfo = styled.section`
     padding: 2rem;
     border-radius: 1.4rem;
     background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0px 4px 20px -2px rgba(50, 50, 71, 0.02),
-      0px 0px 8px 0px rgba(12, 26, 75, 0.1);
+    box-shadow: var(--box-shadow);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
   }
