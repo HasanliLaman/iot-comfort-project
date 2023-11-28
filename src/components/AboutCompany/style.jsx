@@ -37,7 +37,7 @@ const StyleAboutCompany = styled.section`
     padding: 9rem 0 14rem;
 
     & > div {
-      gap: 13rem;
+      gap: 11rem;
     }
 
     .info-block {
