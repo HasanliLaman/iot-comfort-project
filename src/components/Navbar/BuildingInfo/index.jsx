@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import StyleBuildingInfo from "./style";
 import buildingImg from "../../../assets/images/building.png";
 import bulletGreen from "../../../assets/images/bullet-green.svg";
@@ -6,10 +7,14 @@ import bulletYellow from "../../../assets/images/bullet-yellow.svg";
 const BuildingInfo = () => {
   return (
     <StyleBuildingInfo>
-      <img src={buildingImg} alt="Main building" />
+      <Link to="/about">
+        <img src={buildingImg} alt="Main building" />
+      </Link>
       <article>
-        <h1>My home</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+        <Link to="/about">
+          <h1>AIP Primeca Lorraine</h1>
+        </Link>
+        <p>745 Rue du Jardin-Botanique, 54600 Villers-lès-Nancy</p>
       </article>
       <ul>
         <li>

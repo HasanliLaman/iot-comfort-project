@@ -115,7 +115,11 @@ const Reset = css`
 
   a {
     color: inherit;
+  }
+
+  a:hover {
     text-decoration: none;
+    color: inherit;
   }
 
   button {

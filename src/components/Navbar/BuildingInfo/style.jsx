@@ -10,11 +10,24 @@ const StyleBuildingInfo = styled.section`
   gap: 1.8rem;
   color: var(--color-grey-600);
 
+  a:hover h1 {
+    color: var(--color-grey-700);
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a img {
+    margin-bottom: -0.7rem;
+  }
+
   h1 {
     text-transform: capitalize;
     font-size: 2rem;
     line-height: 3rem;
     color: var(--color-grey-800);
+    transition: 0.5s;
   }
 
   p {

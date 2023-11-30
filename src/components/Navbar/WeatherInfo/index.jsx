@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import StyleWeatherInfo from "./style";
 import iconTermometer from "../../../assets/images/icon-termometer.svg";
 import iconHumidity from "../../../assets/images/icon-humidity.svg";
@@ -13,6 +15,16 @@ const WeatherInfo = () => {
     weekday: "long",
   };
 
+  const fetchWeatherData = async () => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=48.6637576&lon=6.1569145&appid=131db94e7bda55b6d4b4ac04ccdefb49`;
+    const response = await axios.get(url);
+    return response.data;
+  };
+
+  const { data } = useQuery(["weatherData"], fetchWeatherData);
+
+  console.log(data);
+
   return (
     <StyleWeatherInfo>
       <ul>
@@ -26,26 +38,28 @@ const WeatherInfo = () => {
           </article>
         </li>
       </ul>
-      <ul>
-        <li>
-          <div className="card-image">
-            <img src={iconTermometer} alt="temperature icon" />
-          </div>
-          <article>
-            <p>Partly Cloudy</p>
-            <span>23 °</span>
-          </article>
-        </li>
-        <li>
-          <div className="card-image">
-            <img src={iconHumidity} alt="humidity icon" />
-          </div>
-          <article>
-            <p>Humidity</p>
-            <span>66 °</span>
-          </article>
-        </li>
-      </ul>
+      {data && (
+        <ul>
+          <li>
+            <div className="card-image">
+              <img src={iconTermometer} alt="temperature icon" />
+            </div>
+            <article>
+              <p>{data.weather[0].description}</p>
+              <span>{Math.round(data.main.temp - 272.15)} °</span>
+            </article>
+          </li>
+          <li>
+            <div className="card-image">
+              <img src={iconHumidity} alt="humidity icon" />
+            </div>
+            <article>
+              <p>Humidity</p>
+              <span>{data.main.humidity} %</span>
+            </article>
+          </li>
+        </ul>
+      )}
     </StyleWeatherInfo>
   );
 };

@@ -41,6 +41,10 @@ const StyleWeatherInfo = styled.section`
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
+
+      p {
+        text-transform: capitalize;
+      }
     }
 
     .card-image {
@@ -68,7 +72,7 @@ const StyleWeatherInfo = styled.section`
     justify-content: space-between;
 
     ul:last-of-type {
-      max-width: 440px;
+      max-width: 460px;
       gap: 4rem;
     }
 
@@ -105,11 +109,6 @@ const StyleWeatherInfo = styled.section`
         width: 4rem;
         height: 4rem;
       }
-    }
-
-    ul:last-of-type {
-      max-width: 440px;
-      gap: 4rem;
     }
 
     ul:first-of-type li span {
