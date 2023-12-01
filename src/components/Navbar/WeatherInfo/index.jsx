@@ -23,8 +23,6 @@ const WeatherInfo = () => {
 
   const { data } = useQuery(["weatherData"], fetchWeatherData);
 
-  console.log(data);
-
   return (
     <StyleWeatherInfo>
       <ul>

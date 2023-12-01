@@ -8,7 +8,7 @@ const StyleSortingSidebar = styled.div`
   bottom: 0;
   left: 0;
   overflow-y: auto;
-  padding: 2.2rem 3rem 2rem 2.5rem;
+  padding: 2.2rem 3.5rem 2rem 3rem;
   z-index: 2;
   transition: all 0.5s;
   transform: translateX(-100%);
@@ -32,7 +32,7 @@ const StyleSortingSidebar = styled.div`
   }
 
   form {
-    padding-top: 5rem;
+    padding-top: 6rem;
     display: flex;
     flex-direction: column;
     gap: 2.5rem;

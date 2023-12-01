@@ -32,7 +32,7 @@ const StyleFilterSidebar = styled.div`
   }
 
   form {
-    padding-top: 5rem;
+    padding-top: 6rem;
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
