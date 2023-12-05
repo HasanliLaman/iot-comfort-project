@@ -55,7 +55,7 @@ const LogInForm = () => {
           <p className="error-message">{errors.password?.message}</p>
         )}
       </div>
-      <button>Log In</button>
+      <button>Login</button>
     </StyleLogInForm>
   );
 };
