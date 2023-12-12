@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyleSidebar = styled.div`
   aside {
     position: fixed;
+    height: 100vh;
     background-color: var(--color-grey-0);
     width: 100%;
     top: 0;
@@ -77,7 +78,8 @@ const StyleSidebar = styled.div`
       font-weight: 500;
       line-height: 2.2rem;
 
-      li {
+      li > a,
+      li:last-of-type {
         display: flex;
         align-items: center;
         gap: 0.8rem;
@@ -87,7 +89,8 @@ const StyleSidebar = styled.div`
         transition: all 0.5s;
       }
 
-      li:hover {
+      li:hover > a,
+      li:hover:last-of-type {
         background: rgba(209, 230, 255, 0.3);
       }
 
@@ -107,9 +110,15 @@ const StyleSidebar = styled.div`
 
   .btn-hamburger {
     position: fixed;
-    top: 2rem;
+    bottom: 2rem;
     left: 1.5rem;
     cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.5s;
+
+    &:hover {
+      opacity: 1;
+    }
 
     img {
       width: 4rem;
@@ -130,6 +139,7 @@ const StyleSidebar = styled.div`
     }
 
     aside {
+      position: fixed;
       transform: translateX(0%);
       max-width: 280px;
 

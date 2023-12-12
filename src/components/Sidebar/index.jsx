@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import StyleSidebar from "./style";
 import iconClose from "../../assets/images/icon-close.svg";
 import iconHamburger from "../../assets/images/icon-hamburger.svg";
@@ -7,7 +8,6 @@ import logo from "../../assets/images/logo.svg";
 import iconDashboard from "../../assets/images/icon-dashboard.svg";
 import iconAbout from "../../assets/images/icon-about.svg";
 import iconRooms from "../../assets/images/icon-rooms.svg";
-import iconSensors from "../../assets/images/icon-sensors.svg";
 import iconUsers from "../../assets/images/icon-users.svg";
 import iconLogout from "../../assets/images/icon-logout.svg";
 
@@ -35,24 +35,40 @@ const Sidebar = () => {
         </div>
         <ul>
           <li>
-            <img alt="Dashboard" src={iconDashboard} />
-            <p>Dashboard</p>
-          </li>
-          <li className="nav-active">
-            <img alt="About" src={iconAbout} />
-            <p>About</p>
-          </li>
-          <li>
-            <img alt="Rooms" src={iconRooms} />
-            <p>Rooms</p>
+            <NavLink
+              to="dashboard"
+              className={({ isActive }) => (isActive ? "nav-active" : "")}
+            >
+              <img alt="Dashboard" src={iconDashboard} />
+              <p>Dashboard</p>
+            </NavLink>
           </li>
           <li>
-            <img alt="Sensors" src={iconSensors} />
-            <p>Sensors</p>
+            <NavLink
+              to="/aboutbuilding"
+              className={({ isActive }) => (isActive ? "nav-active" : "")}
+            >
+              <img alt="About" src={iconAbout} />
+              <p>About</p>
+            </NavLink>
           </li>
           <li>
-            <img alt="Users" src={iconUsers} />
-            <p>Users</p>
+            <NavLink
+              to="rooms"
+              className={({ isActive }) => (isActive ? "nav-active" : "")}
+            >
+              <img alt="Rooms" src={iconRooms} />
+              <p>Rooms</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="users"
+              className={({ isActive }) => (isActive ? "nav-active" : "")}
+            >
+              <img alt="Users" src={iconUsers} />
+              <p>Users</p>
+            </NavLink>
           </li>
           <li>
             <img alt="Logout" src={iconLogout} />

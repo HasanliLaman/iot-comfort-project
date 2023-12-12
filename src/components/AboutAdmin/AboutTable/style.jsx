@@ -1,0 +1,83 @@
+import styled from "styled-components";
+
+const StyleAboutTable = styled.div`
+  padding: 4rem 2rem;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+
+    h2 {
+      color: var(--color-grey-800);
+    }
+
+    button {
+      color: var(--color-grey-0);
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 2rem;
+      border: 0;
+      outline: 0;
+      border-radius: 2rem;
+      background: var(--color-blue-500);
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: 0.5s;
+      margin-top: auto;
+
+      &:hover {
+        background: var(--color-blue-700);
+      }
+    }
+  }
+
+  .table-container {
+    overflow-x: auto;
+    padding: 1.7rem 2.5rem;
+    background: var(--color-grey-0);
+    border-radius: 1.2rem;
+    box-shadow: var(--box-shadow-card);
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 1.3rem 1rem;
+    text-align: center;
+  }
+
+  td {
+    color: var(--color-grey-700);
+  }
+
+  th {
+    font-weight: var(--fw-semibold);
+    border-bottom: 2px solid var(--color-grey-150);
+    padding-bottom: 1.7rem;
+  }
+
+  tr:first-of-type td {
+    padding-top: 2.2rem;
+  }
+
+  .tables {
+    display: grid;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 995px) {
+    padding: 5rem 3rem 4rem;
+
+    .tables {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+`;
+
+export default StyleAboutTable;
