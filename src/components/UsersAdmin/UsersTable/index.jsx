@@ -1,15 +1,16 @@
 import Zoom from "react-medium-image-zoom";
 import StyleUsersTable from "./style";
 import avatar from "../../../assets/images/aipl.jpg";
-import iconEdit from "../../../assets/images/icon-edit.svg";
 import "react-medium-image-zoom/dist/styles.css";
+import UsersCreate from "../UsersCreate";
+import UsersEdit from "../UsersEdit";
 
 const UsersTable = () => {
   return (
     <StyleUsersTable>
       <header>
         <h2>Users</h2>
-        <button>Add New</button>
+        <UsersCreate />
       </header>
       <div className="table-container">
         <table>
@@ -34,7 +35,7 @@ const UsersTable = () => {
               <td>+33745604541</td>
 
               <td>
-                <img alt="edit" src={iconEdit} />
+                <UsersEdit />
               </td>
             </tr>
             <tr>
@@ -47,7 +48,7 @@ const UsersTable = () => {
               <td>hesenlileman2001@gmail.com</td>
               <td>+33745604541</td>
               <td>
-                <img alt="edit" src={iconEdit} />
+                <UsersEdit />
               </td>
             </tr>
             <tr>
@@ -61,7 +62,7 @@ const UsersTable = () => {
               <td>+33745604541</td>
 
               <td>
-                <img alt="edit" src={iconEdit} />
+                <UsersEdit />
               </td>
             </tr>
           </tbody>

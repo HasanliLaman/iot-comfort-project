@@ -1,15 +1,16 @@
 import Zoom from "react-medium-image-zoom";
+import RoomsEdit from "../RoomsEdit";
 import StyleRoomsTable from "./style";
 import roomImg from "../../../assets/images/room-template.jpg";
-import iconEdit from "../../../assets/images/icon-edit.svg";
 import "react-medium-image-zoom/dist/styles.css";
+import RoomsCreate from "../RoomsCreate";
 
 const RoomsTable = () => {
   return (
     <StyleRoomsTable>
       <header>
         <h2>Rooms</h2>
-        <button>Add New</button>
+        <RoomsCreate />
       </header>
       <div className="table-container">
         <table>
@@ -41,7 +42,7 @@ const RoomsTable = () => {
               <td>45</td>
               <td>7</td>
               <td>
-                <img alt="edit" src={iconEdit} />
+                <RoomsEdit />
               </td>
             </tr>
             <tr>
@@ -58,7 +59,7 @@ const RoomsTable = () => {
               <td>45</td>
               <td>7</td>
               <td>
-                <img alt="edit" src={iconEdit} />
+                <RoomsEdit />
               </td>
             </tr>
             <tr>
@@ -75,7 +76,7 @@ const RoomsTable = () => {
               <td>45</td>
               <td>7</td>
               <td>
-                <img alt="edit" src={iconEdit} />
+                <RoomsEdit />
               </td>
             </tr>
           </tbody>

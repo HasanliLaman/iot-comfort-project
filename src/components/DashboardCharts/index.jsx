@@ -44,12 +44,12 @@ const dataLine = {
   labels: ["27 Nov", "30 Nov", "3 Dec", "7 Dec", "10 Dec"],
   datasets: [
     {
+      fill: true,
       data: [...Array(5).keys()].map(() =>
         Math.floor(Math.random() * (2000 - 500 + 1) + 500)
       ),
-      borderWidth: 1,
-      borderColor: "#606873db",
-      backgroundColor: "#606873db",
+      borderColor: "#1b83f3d4",
+      backgroundColor: "#1b83f339",
     },
   ],
 };
@@ -62,7 +62,7 @@ const dataBar = {
       data: [...Array(5).keys()].map(() =>
         Math.floor(Math.random() * (1500 - 1 + 1) + 1)
       ),
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      backgroundColor: "#1674d886",
     },
   ],
 };
@@ -83,8 +83,9 @@ const dataBarHorizontal = {
       data: [...Array(7).keys()].map(() =>
         Math.floor(Math.random() * (500 - 1 + 1) + 1)
       ),
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-      borderColor: "rgba(255, 99, 132, 0.5)",
+      backgroundColor: "#1674d8bb",
+      borderColor: "#1674d8bb",
+      borderWidth: 1,
     },
   ],
 };
@@ -93,12 +94,12 @@ const dataLineArea = {
   labels: ["27 Nov", "30 Nov", "3 Dec", "7 Dec", "10 Dec"],
   datasets: [
     {
-      fill: true,
       data: [...Array(5).keys()].map(() =>
         Math.floor(Math.random() * (500 - 100 + 1) + 100)
       ),
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      borderWidth: 1,
+      borderColor: "#004894ba",
+      backgroundColor: "#1674d836",
     },
   ],
 };

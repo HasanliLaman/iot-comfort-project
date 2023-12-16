@@ -1,3 +1,4 @@
+import AboutEdit from "../AboutEdit";
 import StyleAboutTable from "./style";
 import "react-medium-image-zoom/dist/styles.css";
 
@@ -6,7 +7,7 @@ const AboutTable = () => {
     <StyleAboutTable>
       <header>
         <h2>About Building</h2>
-        <button>Edit</button>
+        <AboutEdit />
       </header>
       <div className="tables">
         <div className="table-container">
