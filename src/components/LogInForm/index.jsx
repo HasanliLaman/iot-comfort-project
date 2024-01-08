@@ -1,25 +1,52 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "@tanstack/react-query";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 import StyleLogInForm from "./style";
 import { logInSchema } from "../../schemas";
 import iconEye from "../../assets/images/icon-eye.svg";
 import iconEyeClosed from "../../assets/images/icon-eye-closed.svg";
-import { useState } from "react";
+import { login } from "../../server";
+import { AuthContext } from "../../context/AuthContext";
+
+library.add(faSpinner);
 
 const LogInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { logInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { data, isLoading, mutate } = useMutation({
+    mutationFn: login,
+    onError: () => toast.error("Email or password is wrong"),
+    onSuccess: ({ data }) => {
+      logInUser(data.token);
+      navigate("/dashboard");
+    },
+  });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
+    reset,
   } = useForm({
     resolver: yupResolver(logInSchema),
   });
 
   const submitHandler = async function (formData) {
-    console.log(formData);
+    mutate(formData);
+
+    if (data)
+      reset({
+        email: "",
+        password: "",
+      });
   };
 
   return (
@@ -55,7 +82,20 @@ const LogInForm = () => {
           <p className="error-message">{errors.password?.message}</p>
         )}
       </div>
-      <button>Login</button>
+      <button>
+        <p>Login</p>
+        {isLoading && (
+          <FontAwesomeIcon
+            icon="fa-spinner"
+            spin
+            style={{
+              color: "#fafcff",
+              marginLeft: "1rem",
+              fontSize: "1.8rem",
+            }}
+          />
+        )}
+      </button>
     </StyleLogInForm>
   );
 };

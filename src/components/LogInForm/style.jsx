@@ -26,6 +26,10 @@ const StyleLogInForm = styled.form`
     line-height: 2rem;
     margin-top: 2.4rem;
     transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
   }
 
   input {

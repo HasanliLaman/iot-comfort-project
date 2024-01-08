@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import StyleSidebar from "./style";
+import { AuthContext } from "../../context/AuthContext";
 import iconClose from "../../assets/images/icon-close.svg";
 import iconHamburger from "../../assets/images/icon-hamburger.svg";
 import avatar from "../../assets/images/user-avatar.png";
@@ -13,6 +14,13 @@ import iconLogout from "../../assets/images/icon-logout.svg";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
+  const { logOutUser } = useContext(AuthContext);
+
+  const onLogout = () => {
+    navigate("/admin");
+    logOutUser();
+  };
 
   return (
     <StyleSidebar>
@@ -70,7 +78,7 @@ const Sidebar = () => {
               <p>Users</p>
             </NavLink>
           </li>
-          <li>
+          <li onClick={onLogout}>
             <img alt="Logout" src={iconLogout} />
             <p>Logout</p>
           </li>
