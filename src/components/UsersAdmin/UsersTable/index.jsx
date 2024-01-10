@@ -1,73 +1,68 @@
 import Zoom from "react-medium-image-zoom";
+import { useQuery } from "@tanstack/react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { getUsers } from "../../../server";
 import StyleUsersTable from "./style";
-import avatar from "../../../assets/images/aipl.jpg";
 import "react-medium-image-zoom/dist/styles.css";
-import UsersCreate from "../UsersCreate";
-import UsersEdit from "../UsersEdit";
+
+library.add(faSpinner);
 
 const UsersTable = () => {
+  const { data, isLoading, isRefetching } = useQuery(["roomsData"], getUsers);
+
   return (
     <StyleUsersTable>
       <header>
         <h2>Users</h2>
-        <UsersCreate />
       </header>
-      <div className="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Avatar</th>
-              <th>Full Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <Zoom>
-                  <img className="avatar" alt="room" src={avatar} />
-                </Zoom>
-              </td>
-              <td>Laman Hasanli</td>
-              <td>hesenlileman2001@gmail.com</td>
-              <td>+33745604541</td>
-
-              <td>
-                <UsersEdit />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Zoom>
-                  <img className="avatar" alt="room" src={avatar} />
-                </Zoom>
-              </td>
-              <td>Laman Hasanli</td>
-              <td>hesenlileman2001@gmail.com</td>
-              <td>+33745604541</td>
-              <td>
-                <UsersEdit />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Zoom>
-                  <img className="avatar" alt="room" src={avatar} />
-                </Zoom>
-              </td>
-              <td>Laman Hasanli</td>
-              <td>hesenlileman2001@gmail.com</td>
-              <td>+33745604541</td>
-
-              <td>
-                <UsersEdit />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {isLoading || isRefetching ? (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <FontAwesomeIcon
+            icon="fa-spinner"
+            spin
+            style={{
+              margin: "5rem 0",
+              color: "#ccc",
+              fontSize: "5rem",
+            }}
+          />
+        </div>
+      ) : (
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Avatar</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Added at</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.data.data.map((user) => (
+                <tr key={user._id}>
+                  <td>
+                    <Zoom>
+                      <img
+                        className="avatar"
+                        alt="room"
+                        src={`http://167.71.39.204:8081/${user.profileImage}`}
+                      />
+                    </Zoom>
+                  </td>
+                  <td>{user.name}</td>
+                  <td>{user.surname}</td>
+                  <td>{user.email}</td>
+                  <td>{new Date(user.createdAt).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </StyleUsersTable>
   );
 };

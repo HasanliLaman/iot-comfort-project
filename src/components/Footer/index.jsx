@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <StyleFooter>
       <Container>
-        <p>&#xa9; 2023 Copyright ComfortPie</p>
+        <p>&#xa9; 2024 Copyright ComfortPie</p>
       </Container>
     </StyleFooter>
   );

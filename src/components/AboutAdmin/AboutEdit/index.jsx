@@ -1,12 +1,26 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal, Button } from "rsuite";
+import { toast } from "react-toastify";
+import { updateAbout } from "../../../server";
 import { aboutSchema } from "../../../schemas";
 import StyleAboutEdit from "./style";
 
-const AboutEdit = () => {
+const AboutEdit = ({ data, refetch }) => {
   const [open, setOpen] = useState(false);
+
+  const { mutate } = useMutation({
+    mutationFn: updateAbout,
+    onError: () => toast.error("Something went wrong!"),
+    onSuccess: () => {
+      refetch();
+      setOpen(false);
+      toast.success("Successfully updated!");
+    },
+  });
 
   const {
     register,
@@ -16,10 +30,8 @@ const AboutEdit = () => {
   } = useForm({
     resolver: yupResolver(aboutSchema),
     defaultValues: {
-      whoAreWe:
-        "The AIP-PRIMECA Lorraine cluster is one of the 10 regional members of GIS S-mart. It is a joint service of the University of Lorraine. The center is a regional center of educational resources of an industrial nature, used by regional training courses (initial or continuing) around the theme of the industry of the future. This resource center is used as experimental support for initial and continuing training in the field of manufacturing and integrated design. The center aims to promote the implementation of industrial manipulations for in-depth teaching by discipline or interdisciplinary, from BAC+2 to BAC+5.",
-      ourMission:
-        "AIP-PRIMECA Lorraine is French academic community for the industry of the future which creates a fertile environment by placing engineering at the service of society. It brings together an open academic community to build scientific, technological and societal change on a local and national scale. The center provides educational resources (platforms and software), of an industrial nature, shared for teaching. These resources are accessible in person or remotely. It also manages the sharing of business software through the Lorraine Network of Digital Mechanics Resources which brings together 21 components or laboratories.",
+      whoAreWe: data.whoAreWe,
+      ourMision: data.ourMision,
     },
   });
 
@@ -30,7 +42,7 @@ const AboutEdit = () => {
   };
 
   const submitHandler = async function (formData) {
-    console.log(formData);
+    mutate(formData);
   };
 
   return (
@@ -55,15 +67,15 @@ const AboutEdit = () => {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="ourMission">Our mission</label>
+                <label htmlFor="ourMision">Our mission</label>
                 <textarea
-                  {...register("ourMission")}
-                  id="ourMission"
-                  name="ourMission"
+                  {...register("ourMision")}
+                  id="ourMision"
+                  name="ourMision"
                   rows={6}
                 />
-                {errors.ourMission?.message && (
-                  <p className="error-message">{errors.ourMission?.message}</p>
+                {errors.ourMision?.message && (
+                  <p className="error-message">{errors.ourMision?.message}</p>
                 )}
               </div>
             </Modal.Body>

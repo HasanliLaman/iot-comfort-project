@@ -41,6 +41,11 @@ const StyleRoomsTable = styled.div`
     border-radius: 1.2rem;
   }
 
+  .room-img {
+    width: 3rem;
+    object-fit: cover;
+  }
+
   img {
     height: 1.9rem;
     border-radius: 2px;

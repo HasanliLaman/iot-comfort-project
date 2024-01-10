@@ -3,30 +3,27 @@ import { useQuery } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { api } from "../../../server";
+import { getRooms } from "../../../server";
 import RoomsEdit from "../RoomsEdit";
 import StyleRoomsTable from "./style";
-import roomImg from "../../../assets/images/room-template.jpg";
 import "react-medium-image-zoom/dist/styles.css";
 import RoomsCreate from "../RoomsCreate";
 
 library.add(faSpinner);
 
 const RoomsTable = () => {
-  const fetchData = async () => {
-    const response = await api.get("/room-info");
-    return response.data;
-  };
+  const { data, isLoading, isRefetching, refetch } = useQuery(
+    ["roomsData"],
+    getRooms
+  );
 
-  const { data, isLoading, refetch } = useQuery(["roomsData"], fetchData);
-  console.log(data);
   return (
     <StyleRoomsTable>
       <header>
         <h2>Rooms</h2>
         <RoomsCreate refetch={refetch} />
       </header>
-      {isLoading ? (
+      {isLoading || isRefetching ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <FontAwesomeIcon
             icon="fa-spinner"
@@ -55,24 +52,29 @@ const RoomsTable = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {data.data.map(room=>)} */}
-              <tr>
-                <td>
-                  <Zoom>
-                    <img alt="room" src={roomImg} />
-                  </Zoom>
-                </td>
-                <td>Room 5</td>
-                <td>78</td>
-                <td>67</td>
-                <td>09</td>
-                <td>56</td>
-                <td>45</td>
-                <td>7</td>
-                <td>
-                  <RoomsEdit />
-                </td>
-              </tr>
+              {data.data.map((room) => (
+                <tr key={room._id}>
+                  <td>
+                    <Zoom>
+                      <img
+                        className="room-img"
+                        alt="room"
+                        src={`http://167.71.39.204:8081/${room.roomImage}`}
+                      />
+                    </Zoom>
+                  </td>
+                  <td>Room {room.roomNumber}</td>
+                  <td>{room.nSockets}</td>
+                  <td>{room.nAvailableSockets}</td>
+                  <td>{room.nComputers}</td>
+                  <td>{room.nMarkerPens}</td>
+                  <td>{room.nChairs}</td>
+                  <td>{room.additionalFacilities}</td>
+                  <td>
+                    <RoomsEdit room={room} id={room._id} refetch={refetch} />
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

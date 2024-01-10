@@ -49,6 +49,11 @@ const StyleUsersTable = styled.div`
     cursor: pointer;
   }
 
+  .avatar {
+    width: 2.5rem;
+    object-fit: cover;
+  }
+
   table {
     width: 100%;
   }

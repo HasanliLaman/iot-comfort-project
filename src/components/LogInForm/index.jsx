@@ -25,7 +25,11 @@ const LogInForm = () => {
     mutationFn: login,
     onError: () => toast.error("Email or password is wrong"),
     onSuccess: ({ data }) => {
-      logInUser(data.token);
+      logInUser(data.token, {
+        name: data.name,
+        surname: data.surname,
+        image: data.profileImage,
+      });
       navigate("/dashboard");
     },
   });

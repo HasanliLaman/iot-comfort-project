@@ -1,13 +1,27 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal, Button } from "rsuite";
+import { toast } from "react-toastify";
 import { roomsSchema } from "../../../schemas";
+import { updateRoom } from "../../../server";
 import iconEdit from "../../../assets/images/icon-edit.svg";
 import StyleRoomsEdit from "./style";
 
-const RoomsEdit = () => {
+const RoomsEdit = ({ id, refetch, room }) => {
   const [open, setOpen] = useState(false);
+
+  const { mutate } = useMutation({
+    mutationFn: updateRoom,
+    onError: () => toast.error("Something went wrong!"),
+    onSuccess: () => {
+      refetch();
+      setOpen(false);
+      toast.success("Successfully updated!");
+    },
+  });
 
   const {
     register,
@@ -16,16 +30,30 @@ const RoomsEdit = () => {
     reset,
   } = useForm({
     resolver: yupResolver(roomsSchema),
+    defaultValues: {
+      image: room.image,
+      roomNumber: room.roomNumber,
+      nChairs: room.nChairs,
+      nSockets: room.nSockets,
+      nComputers: room.nComputers,
+      nAvailableSockets: room.nAvailableSockets,
+      nMarkerPens: room.nMarkerPens,
+      additionalFacilities: room.additionalFacilities,
+    },
   });
 
   const handleOpen = () => setOpen(true);
+
   const handleClose = () => {
-    reset();
     setOpen(false);
+    reset();
   };
 
   const submitHandler = async function (formData) {
-    console.log(formData);
+    const data = new FormData();
+    Object.keys(formData).forEach((el) => data.append(el, formData[el]));
+    data.append("image", formData.image[0]);
+    mutate({ body: data, id });
   };
 
   return (
@@ -38,107 +66,111 @@ const RoomsEdit = () => {
             </Modal.Header>
             <Modal.Body>
               <div className="form-group">
-                <label htmlFor="photo">Photo</label>
+                <label htmlFor="image">Room image</label>
                 <input
-                  {...register("photo")}
-                  id="photo"
-                  name="photo"
+                  {...register("image")}
+                  id="image"
+                  name="image"
                   type="file"
                 />
-                {errors.photo?.message && (
-                  <p className="error-message">{errors.photo?.message}</p>
+                {errors.image?.message && (
+                  <p className="error-message">{errors.image?.message}</p>
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="roomNumber">Room number</label>
                 <input
-                  {...register("name")}
-                  id="name"
-                  name="name"
-                  type="text"
+                  {...register("roomNumber")}
+                  id="roomNumber"
+                  name="roomNumber"
+                  type="number"
                 />
-                {errors.name?.message && (
-                  <p className="error-message">{errors.name?.message}</p>
+                {errors.roomNumber?.message && (
+                  <p className="error-message">{errors.roomNumber?.message}</p>
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="sockets">Sockets</label>
+                <label htmlFor="nSockets">Sockets</label>
                 <input
-                  {...register("sockets")}
-                  id="sockets"
-                  name="sockets"
+                  {...register("nSockets")}
+                  id="nSockets"
+                  name="nSockets"
                   type="number"
                   min={0}
                 />
-                {errors.sockets?.message && (
-                  <p className="error-message">{errors.sockets?.message}</p>
+                {errors.nSockets?.message && (
+                  <p className="error-message">{errors.nSockets?.message}</p>
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="activeSockets">Active Sockets</label>
+                <label htmlFor="nAvailableSockets">Active Sockets</label>
                 <input
-                  {...register("activeSockets")}
-                  id="activeSockets"
-                  name="activeSockets"
+                  {...register("nAvailableSockets")}
+                  id="nAvailableSockets"
+                  name="nAvailableSockets"
                   type="number"
                   min={0}
                 />
-                {errors.activeSockets?.message && (
+                {errors.nAvailableSockets?.message && (
                   <p className="error-message">
-                    {errors.activeSockets?.message}
+                    {errors.nAvailableSockets?.message}
                   </p>
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="computers">Computers</label>
+                <label htmlFor="nComputers">Computers</label>
                 <input
-                  {...register("computers")}
-                  id="computers"
-                  name="computers"
+                  {...register("nComputers")}
+                  id="nComputers"
+                  name="nComputers"
                   type="number"
                   min={0}
                 />
-                {errors.computers?.message && (
-                  <p className="error-message">{errors.computers?.message}</p>
+                {errors.nComputers?.message && (
+                  <p className="error-message">{errors.nComputers?.message}</p>
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="markers">Markers</label>
+                <label htmlFor="nMarkerPens">Markers</label>
                 <input
-                  {...register("markers")}
-                  id="markers"
-                  name="markers"
+                  {...register("nMarkerPens")}
+                  id="nMarkerPens"
+                  name="nMarkerPens"
                   type="number"
                   min={0}
                 />
-                {errors.markers?.message && (
-                  <p className="error-message">{errors.markers?.message}</p>
+                {errors.nMarkerPens?.message && (
+                  <p className="error-message">{errors.nMarkerPens?.message}</p>
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="chairs">Chairs</label>
+                <label htmlFor="nChairs">Chairs</label>
                 <input
-                  {...register("chairs")}
-                  id="chairs"
-                  name="chairs"
+                  {...register("nChairs")}
+                  id="nChairs"
+                  name="nChairs"
                   type="number"
                   min={0}
                 />
-                {errors.chairs?.message && (
-                  <p className="error-message">{errors.chairs?.message}</p>
+                {errors.nChairs?.message && (
+                  <p className="error-message">{errors.nChairs?.message}</p>
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="additional">Additional</label>
+                <label htmlFor="additionalFacilities">
+                  additionalFacilities
+                </label>
                 <input
-                  {...register("additional")}
-                  id="additional"
-                  name="additional"
+                  {...register("additionalFacilities")}
+                  id="additionalFacilities"
+                  name="additionalFacilities"
                   type="number"
                   min={0}
                 />
-                {errors.additional?.message && (
-                  <p className="error-message">{errors.additional?.message}</p>
+                {errors.additionalFacilities?.message && (
+                  <p className="error-message">
+                    {errors.additionalFacilities?.message}
+                  </p>
                 )}
               </div>
             </Modal.Body>

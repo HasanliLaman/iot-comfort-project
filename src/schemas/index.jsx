@@ -12,36 +12,36 @@ export const logInSchema = Yup.object().shape({
 });
 
 export const roomsSchema = Yup.object().shape({
-  photo: Yup.mixed()
+  image: Yup.mixed().test("fileType", "Wrong file type", (value) => {
+    if (!value[0]) {
+      return true;
+    }
+    return ["image/jpeg", "image/jpg", "image/png"].includes(value[0]?.type);
+  }),
+  roomNumber: Yup.number()
     .required("This field is required")
-    .test("fileType", "Wrong file type", (value) => {
-      if (!value) {
-        return true;
-      }
-      return ["image/jpeg", "image/jpg", "image/png"].includes(value.type);
-    }),
-  name: Yup.string().required("This field is required"),
-  sockets: Yup.number()
+    .typeError("Value must be number"),
+  nSockets: Yup.number()
     .min(0, "The value should be positive or zero")
     .required("This field is required")
     .typeError("Value must be number"),
-  activeSockets: Yup.number()
+  nAvailableSockets: Yup.number()
     .min(0, "The value should be positive or zero")
     .required("This field is required")
     .typeError("Value must be number"),
-  computers: Yup.number()
+  nComputers: Yup.number()
     .min(0, "The value should be positive or zero")
     .required("This field is required")
     .typeError("Value must be number"),
-  markers: Yup.number()
+  nMarkerPens: Yup.number()
     .min(0, "The value should be positive or zero")
     .required("This field is required")
     .typeError("Value must be number"),
-  chairs: Yup.number()
+  nChairs: Yup.number()
     .min(0, "The value should be positive or zero")
     .required("This field is required")
     .typeError("Value must be number"),
-  additional: Yup.number()
+  additionalFacilities: Yup.number()
     .min(0, "The value should be positive or zero")
     .required("This field is required")
     .typeError("Value must be number"),
@@ -63,5 +63,5 @@ export const usersSchema = Yup.object().shape({
 
 export const aboutSchema = Yup.object().shape({
   whoAreWe: Yup.string().required("This field is required"),
-  ourMission: Yup.string().required("This field is required"),
+  ourMision: Yup.string().required("This field is required"),
 });

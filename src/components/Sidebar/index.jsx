@@ -4,8 +4,7 @@ import StyleSidebar from "./style";
 import { AuthContext } from "../../context/AuthContext";
 import iconClose from "../../assets/images/icon-close.svg";
 import iconHamburger from "../../assets/images/icon-hamburger.svg";
-import avatar from "../../assets/images/user-avatar.png";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo.png";
 import iconDashboard from "../../assets/images/icon-dashboard.svg";
 import iconAbout from "../../assets/images/icon-about.svg";
 import iconRooms from "../../assets/images/icon-rooms.svg";
@@ -35,10 +34,15 @@ const Sidebar = () => {
           <img alt="logo" src={logo} />
         </div>
         <div className="user-info">
-          <img alt="avatar" src={avatar} />
+          <img
+            alt="avatar"
+            src={`http://167.71.39.204:8081/${
+              JSON.parse(localStorage.getItem("user")).image
+            }`}
+          />
           <article>
             <p>Welcome back,</p>
-            <span>Laman</span>
+            <span>{JSON.parse(localStorage.getItem("user")).name}</span>
           </article>
         </div>
         <ul>

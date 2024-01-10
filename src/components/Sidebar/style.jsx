@@ -25,7 +25,7 @@ const StyleSidebar = styled.div`
       justify-content: center;
 
       img {
-        height: 4.25rem;
+        height: 3.5rem;
       }
     }
 
@@ -87,6 +87,7 @@ const StyleSidebar = styled.div`
         padding: 1.2rem;
         border-radius: 1.4rem;
         transition: all 0.5s;
+        text-decoration: none;
       }
 
       li:hover > a,
