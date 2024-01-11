@@ -12,7 +12,6 @@ import Rooms from "./pages/Rooms";
 import Users from "./pages/Users";
 import BuildingInfo from "./pages/BuildingInfo";
 import Dashboard from "./pages/Dashboard";
-import ProtectedRoute from "./components/Auth/ProtectedAuth";
 import { socket } from "./socket";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -49,8 +48,6 @@ function App() {
     if (isConnected && alarmEvents.length) setOpenAlarm(true);
   }, [alarmEvents, isConnected]);
 
-  console.log(alarmEvents, isConnected);
-
   return (
     <>
       <GlobalStyle />
@@ -64,38 +61,10 @@ function App() {
           </Route>
           <Route element={<LogIn />} path="/admin" />
           <Route element={<AdminLayout />}>
-            <Route
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-              path="dashboard"
-            />
-            <Route
-              element={
-                <ProtectedRoute>
-                  <Rooms />
-                </ProtectedRoute>
-              }
-              path="rooms"
-            />
-            <Route
-              element={
-                <ProtectedRoute>
-                  <Users />
-                </ProtectedRoute>
-              }
-              path="users"
-            />
-            <Route
-              element={
-                <ProtectedRoute>
-                  <BuildingInfo />
-                </ProtectedRoute>
-              }
-              path="aboutbuilding"
-            />
+            <Route element={<Dashboard />} path="/dashboard" />
+            <Route element={<Rooms />} path="/rooms" />
+            <Route element={<Users />} path="/users" />
+            <Route element={<BuildingInfo />} path="aboutbuilding" />
           </Route>
         </Routes>
       </div>

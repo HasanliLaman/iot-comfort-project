@@ -9,6 +9,7 @@ const ProtectedRoute = ({ children }) => {
   if (!isLoggedIn) {
     return <Navigate to="/admin" />;
   }
+
   return <>{children}</>;
 };
 

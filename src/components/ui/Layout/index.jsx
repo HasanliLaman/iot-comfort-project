@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../Sidebar";
 import StyleAdminLayout from "./style";
+import ProtectedRoute from "../../Auth/ProtectedAuth";
 
 export const UserLayout = () => (
   <section>
@@ -9,8 +10,10 @@ export const UserLayout = () => (
 );
 
 export const AdminLayout = () => (
-  <StyleAdminLayout>
-    <Sidebar />
-    <Outlet />
-  </StyleAdminLayout>
+  <ProtectedRoute>
+    <StyleAdminLayout>
+      <Sidebar />
+      <Outlet />
+    </StyleAdminLayout>
+  </ProtectedRoute>
 );
