@@ -55,10 +55,26 @@ const StyleFilterSidebar = styled.div`
       padding: 1.3rem;
       cursor: pointer;
       transition: 0.5s;
-      margin-top: auto;
 
       &:hover {
         background: var(--color-grey-800);
+      }
+    }
+
+    .buttons {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .reset-btn {
+      background: var(--color-grey-0);
+      color: var(--color-bg);
+      border: 1px solid var(--color-bg);
+
+      &:hover {
+        background: var(--color-grey-150);
       }
     }
   }
@@ -91,6 +107,16 @@ const StyleFilterSidebar = styled.div`
 
   @media (min-width: 576px) {
     max-width: 380px;
+
+    form {
+      .buttons {
+        flex-direction: row;
+
+        button {
+          flex: 1 1 0;
+        }
+      }
+    }
   }
 `;
 

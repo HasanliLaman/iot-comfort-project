@@ -1,49 +1,55 @@
+import { useQuery } from "@tanstack/react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { getAbout } from "../../server";
 import StyleAboutCompany from "./style";
 import aipl from "../../assets/images/aipl.jpg";
 import aiplStaff from "../../assets/images/aipl-staff.jpg";
+import map from "../../assets/images/aipl-plan.png";
 import Container from "../ui/Container";
 
+library.add(faSpinner);
+
 const AboutCompany = () => {
+  const { data, isLoading, isRefetching } = useQuery(["aboutData"], getAbout);
+
   return (
     <StyleAboutCompany>
-      <Container>
-        <div className="info-block">
-          <img alt="aipl" src={aipl} />
-          <article>
-            <h2>Who are we?</h2>
-            <p>
-              The AIP-PRIMECA Lorraine cluster is one of the 10 regional members
-              of GIS S-mart. It is a joint service of the University of
-              Lorraine. The center is a regional center of educational resources
-              of an industrial nature, used by regional training courses
-              (initial or continuing) around the theme of the industry of the
-              future. This resource center is used as experimental support for
-              initial and continuing training in the field of manufacturing and
-              integrated design. The center aims to promote the implementation
-              of industrial manipulations for in-depth teaching by discipline or
-              interdisciplinary, from BAC+2 to BAC+5.
-            </p>
-          </article>
+      {isLoading || isRefetching ? (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <FontAwesomeIcon
+            icon="fa-spinner"
+            spin
+            style={{
+              margin: "5rem 0",
+              color: "#ccc",
+              fontSize: "5rem",
+            }}
+          />
         </div>
-        <div className="info-block">
-          <img alt="aipl" src={aiplStaff} />
-          <article>
-            <h2>Our mission</h2>
-            <p>
-              AIP-PRIMECA Lorraine is French academic community for the industry
-              of the future which creates a fertile environment by placing
-              engineering at the service of society. It brings together an open
-              academic community to build scientific, technological and societal
-              change on a local and national scale. The center provides
-              educational resources (platforms and software), of an industrial
-              nature, shared for teaching. These resources are accessible in
-              person or remotely. It also manages the sharing of business
-              software through the Lorraine Network of Digital Mechanics
-              Resources which brings together 21 components or laboratories.
-            </p>
-          </article>
-        </div>
-      </Container>
+      ) : (
+        <Container>
+          <div className="info-block">
+            <img alt="aipl" src={aipl} />
+            <article>
+              <h2>Who are we?</h2>
+              <p>{data.data.whoAreWe}</p>
+            </article>
+          </div>
+          <div className="info-block">
+            <img alt="aipl" src={aiplStaff} />
+            <article>
+              <h2>Our mission</h2>
+              <p>{data.data.ourMision}</p>
+            </article>
+          </div>
+          <div className="building-map">
+            <h2>Building Map</h2>
+            <img alt="Building map" src={map} />
+          </div>
+        </Container>
+      )}
     </StyleAboutCompany>
   );
 };

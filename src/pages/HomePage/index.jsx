@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FilterFeatures from "../../components/FilterFeatures";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
@@ -11,11 +11,33 @@ const HomePage = () => {
     document.title = "ComfortPie";
   }, []);
 
+  const [filterValues, setFilterValues] = useState({
+    temperature: [0, 50],
+    humidity: [0, 100],
+    light: [0, 100],
+    sound: [0, 100],
+  });
+
+  const [searchValue, setSearchValue] = useState("");
+
+  const [sortValue, setSortValue] = useState([9, 9, 9]);
+
   return (
     <StyleHomePage>
       <Navbar />
-      <FilterFeatures />
-      <RoomContainer />
+      <FilterFeatures
+        filterValues={filterValues}
+        setFilterValues={setFilterValues}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        setSortValue={setSortValue}
+        sortValue={sortValue}
+      />
+      <RoomContainer
+        sortValue={sortValue}
+        searchValue={searchValue}
+        filterValues={filterValues}
+      />
       <Footer />
     </StyleHomePage>
   );

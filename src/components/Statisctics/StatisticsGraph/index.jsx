@@ -11,7 +11,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { getLast24Hours } from "../../../utils";
 
 ChartJS.register(
   CategoryScale,
@@ -23,9 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const StatisticsGraph = ({ name, color, dataset }) => {
-  const labels = getLast24Hours();
-
+const StatisticsGraph = ({ name, color, dataset, labels }) => {
   const data = {
     labels,
     datasets: [

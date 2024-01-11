@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import StyleBuildingInfo from "./style";
-import buildingImg from "../../../assets/images/building.png";
+import buildingImg from "../../../assets/images/aipl.jpg";
 import bulletGreen from "../../../assets/images/bullet-green.svg";
 import bulletYellow from "../../../assets/images/bullet-yellow.svg";
 
@@ -19,13 +19,13 @@ const BuildingInfo = () => {
       <ul>
         <li>
           <img src={bulletGreen} alt="Bullet" />
-          <span>3</span>
+          <span>12</span>
           <p>Rooms</p>
         </li>
         <li>
           <img src={bulletYellow} alt="Bullet" />
-          <span>10</span>
-          <p>Devices</p>
+          <span>6</span>
+          <p>Staff Members</p>
         </li>
       </ul>
     </StyleBuildingInfo>

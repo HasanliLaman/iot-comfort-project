@@ -8,6 +8,13 @@ const StyleRoomContainer = styled.section`
     gap: 2rem;
   }
 
+  .no-result {
+    text-align: center;
+    font-weight: var(--fw-semibold);
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
   @media (min-width: 768px) {
     padding: 0 0 9rem;
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyleAboutCompany = styled.section`
-  padding: 5rem 0 3rem;
+  padding: 5rem 0 7rem;
 
   & > div {
     display: flex;
@@ -33,6 +33,32 @@ const StyleAboutCompany = styled.section`
     }
   }
 
+  .building-map {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    text-align: center;
+    flex-direction: column;
+
+    h2 {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .building-map {
+      gap: 5rem;
+
+      img {
+        max-width: 80rem;
+      }
+
+      h2 {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
   @media (min-width: 992px) {
     padding: 9rem 0 14rem;
 
@@ -51,7 +77,7 @@ const StyleAboutCompany = styled.section`
       }
     }
 
-    .info-block:last-of-type {
+    .info-block:nth-of-type(2) {
       article {
         grid-column: 1/2;
         grid-row: 1/2;
