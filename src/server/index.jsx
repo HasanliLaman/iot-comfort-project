@@ -21,6 +21,8 @@ export const getRooms = (params) =>
     }`
   );
 
+export const getRoomsAdmin = () => api.get(`/room-info`);
+
 export const getRoomInfo = (id) => api.get(`/room-info/${id}`);
 
 export const updateRoom = (params) =>

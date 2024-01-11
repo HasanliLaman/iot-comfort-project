@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { getRooms } from "../../../server";
+import { getRoomsAdmin } from "../../../server";
 import RoomsEdit from "../RoomsEdit";
 import StyleRoomsTable from "./style";
 import "react-medium-image-zoom/dist/styles.css";
@@ -14,7 +14,7 @@ library.add(faSpinner);
 const RoomsTable = () => {
   const { data, isLoading, isRefetching, refetch } = useQuery(
     ["roomsData"],
-    getRooms
+    getRoomsAdmin
   );
 
   return (
