@@ -9,19 +9,21 @@ const SortingSidebar = ({ closeSorting, isOpen, sortValue, setSortValue }) => {
   const [temperatureValue, setTemperatureValue] = useState(sortValue[0]);
   const [humidityValue, setHumidityValue] = useState(sortValue[1]);
   const [soundValue, setSoundValue] = useState(sortValue[2]);
+  const [lightValue, setLightValue] = useState(sortValue[3]);
 
   useEffect(() => {
     setTemperatureValue(sortValue[0]);
     setHumidityValue(sortValue[1]);
     setSoundValue(sortValue[2]);
+    setLightValue(sortValue[3]);
   }, [sortValue, isOpen]);
 
   const onReset = () => {
-    setSortValue([9, 9, 9]);
+    setSortValue([9, 9, 9, 9]);
   };
 
   const onSubmitSort = () => {
-    setSortValue([temperatureValue, humidityValue, soundValue]);
+    setSortValue([temperatureValue, humidityValue, soundValue, lightValue]);
     closeSorting();
   };
 
@@ -71,22 +73,23 @@ const SortingSidebar = ({ closeSorting, isOpen, sortValue, setSortValue }) => {
             }}
           />
         </div>
-        {/* <div className="form-group">
+        <div className="form-group">
           <label htmlFor="lightS">Light intensity</label>
           <Slider
             id="lightS"
             name="lightS"
-            defaultValue={9}
+            value={lightValue}
             min={0}
             step={1}
             max={9}
             graduated
             progress
+            onChange={(val) => setLightValue(val)}
             renderMark={(mark) => {
               return mark;
             }}
           />
-        </div> */}
+        </div>
         <div className="form-group">
           <label htmlFor="soundS">Sound</label>
           <Slider

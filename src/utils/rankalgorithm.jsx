@@ -9,6 +9,8 @@ export const getScores = (RoomCriteriaMat, criteriaMat) => {
   const humMin = 40;
   const noiseMax = 60;
   const noiseMin = 0;
+  const lightMax = 90;
+  const lightMin = 50;
 
   //Normalization of the values in a matrix
   let RoomCriteriaNormalized = [];
@@ -45,6 +47,17 @@ export const getScores = (RoomCriteriaMat, criteriaMat) => {
     }
   }
 
+  //normalize light
+  RoomCriteriaNormalized[3] = [];
+  for (let i = 0; i < n; i++) {
+    const x = (RoomCriteriaMat[3][i] - lightMin) / (lightMax - lightMin);
+    if (x < 0 || x > 1) {
+      RoomCriteriaNormalized[3][i] = 0;
+    } else {
+      RoomCriteriaNormalized[3][i] = x;
+    }
+  }
+
   //create weight for each criteria accoring to its importance
   var sum = criteriaMat.reduce((a, b) => a + b, 0);
   const criteriaNormalized = [];
@@ -68,11 +81,11 @@ export const getScores = (RoomCriteriaMat, criteriaMat) => {
 
 export const getDataWithScores = (data, criteria) => {
   const tempArr = data.map((room) => room.temperature);
-  const soundArr = data.map((room) => room.temperature);
-  const humidityArr = data.map((room) => room.temperature);
-  //   const lightArr = data.map((room) => room.temperature);
+  const soundArr = data.map((room) => room.soundSensor);
+  const humidityArr = data.map((room) => room.humidity);
+  const lightArr = data.map((room) => room.lightIntensity);
 
-  const sensorsMat = [tempArr, humidityArr, soundArr];
+  const sensorsMat = [tempArr, humidityArr, soundArr, lightArr];
   const scores = getScores(sensorsMat, criteria);
   const dataWithScores = data.map((room, index) => {
     return { ...room, score: scores[index] };

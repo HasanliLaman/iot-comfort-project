@@ -33,8 +33,9 @@ const Predictions = () => {
           </div>
         ) : (
           <StatisticsGraph
-            labels={data.data.prediction.map((el) =>
-              el.timestamp.slice(11, 16)
+            labels={data.data.prediction.map(
+              (el) =>
+                +el.timestamp.slice(11, 13) + 1 + el.timestamp.slice(13, 16)
             )}
             name="Temperature"
             dataset={data.data.prediction.map((el) => el.data)}

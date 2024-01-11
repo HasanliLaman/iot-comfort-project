@@ -59,7 +59,7 @@ const RoomsTable = () => {
                       <img
                         className="room-img"
                         alt="room"
-                        src={`http://167.71.39.204:8081/${room.roomImage}`}
+                        src={`http://192.168.43.159:8081/${room.roomImage}`}
                       />
                     </Zoom>
                   </td>

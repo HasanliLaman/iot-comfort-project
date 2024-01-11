@@ -49,7 +49,7 @@ const UsersTable = () => {
                       <img
                         className="avatar"
                         alt="room"
-                        src={`http://167.71.39.204:8081/${user.profileImage}`}
+                        src={`http://192.168.43.159:8081/${user.profileImage}`}
                       />
                     </Zoom>
                   </td>

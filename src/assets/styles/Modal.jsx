@@ -27,6 +27,10 @@ const Modal = css`
     padding: 1rem;
     width: 100px;
   }
+
+  .alarm-modal .rs-modal-content {
+    background-color: red;
+  }
 `;
 
 export default Modal;

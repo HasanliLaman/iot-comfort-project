@@ -36,7 +36,7 @@ const Sidebar = () => {
         <div className="user-info">
           <img
             alt="avatar"
-            src={`http://167.71.39.204:8081/${
+            src={`http://192.168.43.159:8081/${
               JSON.parse(localStorage.getItem("user")).image
             }`}
           />

@@ -20,8 +20,8 @@ const HomePage = () => {
 
   const [searchValue, setSearchValue] = useState("");
 
-  const [sortValue, setSortValue] = useState([9, 9, 9]);
-
+  const [sortValue, setSortValue] = useState([9, 9, 9, 9]);
+  console.log(sortValue);
   return (
     <StyleHomePage>
       <Navbar />

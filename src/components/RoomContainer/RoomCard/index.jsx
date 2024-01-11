@@ -22,7 +22,7 @@ const RoomCard = ({ room }) => {
             </p>
           </div>
         </article>
-        <img src={`http://167.71.39.204:8081/${room.roomImage}`} alt="Room" />
+        <img src={`http://192.168.43.159:8081/${room.roomImage}`} alt="Room" />
       </StyleRoomCard>
     </Link>
   );
